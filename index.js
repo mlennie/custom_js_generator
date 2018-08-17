@@ -1,12 +1,14 @@
-const { dummySeq, factorialSeq, fibonacciSeq } = require("./sequencers")
+const { dummySeq, factorialSeq, fibonacciSeq,
+       rangeSeq } = require("./sequencers")
 const pipeSeq = require("./pipeSeq")
 const { accumulator } = require("./pipes")
 const test = require("./testHelpers")
 
 // Sequence testing
-test(dummySeq, "Dummy Seq")
-test(factorialSeq, "Factorial Seq")
-test(fibonacciSeq, "Fibonaccie Seq")
+test("Dummy Seq", dummySeq)
+test("Factorial Seq", factorialSeq)
+test("Fibonaccie Seq", fibonacciSeq )
+test("range Seq", rangeSeq, 2,3)
 
 // Pipe testing
 let pipedSeq
@@ -16,5 +18,5 @@ pipedSeq = () => {
            .invoke()
 }
 
-test(pipedSeq, "FactorialSeq with accumulator pipe")
+test("FactorialSeq with accumulator pipe", pipedSeq )
 

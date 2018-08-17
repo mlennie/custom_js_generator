@@ -1,6 +1,6 @@
-module.exports = (sequencer) => {
+module.exports = (sequencer, args) => {
   return {
-    next: sequencer()
+    next: sequencer(args)
   }
 }
 
