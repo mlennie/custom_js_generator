@@ -1,7 +1,7 @@
 const { dummySeq, factorialSeq, fibonacciSeq,
        rangeSeq, primeSeq, partialSumSeq } = require("./sequencers")
 const pipeSeq = require("./pipeSeq")
-const { accumulator } = require("./pipes")
+const { accumulator, isEven } = require("./pipes")
 const test = require("./testHelpers")
 
 // Sequence testing
@@ -29,4 +29,13 @@ pipedSeq = () => {
 }
 
 test("RangeSeq with accumulator pipe", pipedSeq )
+
+pipedSeq = () => {
+  return pipeSeq(rangeSeq, 2,3)
+           .pipeline(accumulator)
+           .pipeline(isEven)
+           .invoke()
+}
+
+test("RangeSeq with accumulator and isEven pipe", pipedSeq )
 
