@@ -52,26 +52,24 @@ for(i = 0; i < 6; i++) {
 let pipedSeq
 function pipeSeq(sequencer) {
 
+  let x = sequencer
   let pipes = []
-  return {
+  let iterator = {
     pipeline: (pipe) => {
       pipes.push(pipe)
-      return pipeSeq(sequencer)
+      return iterator
     },
     invoke: () => {
-      let n
-      for(let i = 0; i < pipes.length; i++) {
-        n = i === 0 ? pipes[i](sequencer()) : pipes[i](n)
-        /*
-        if (i===0) {
-          n = pipes[i](sequencer())
-        } else {
-          n = pipes[i](n)
-        }*/
+      return () => {
+        let n
+        for(let i = 0; i < pipes.length; i++) {
+          n = i === 0 ? pipes[i]()(x()()) : pipes[i]()(n)
+        }
+        return n
       }
-      return () => {return n}
     }
   }
+  return iterator
 
 }
 
@@ -89,9 +87,12 @@ function accumulator() {
 }
 
 console.log("FactorialSeq with accumulator pipe")
-pipedSeq = pipeSeq(factorialSeq)
-             .pipeline(accumulator)
-             .invoke()
+pipedSeq = () => {
+  return pipeSeq(factorialSeq)
+           .pipeline(accumulator)
+           .invoke()
+}
+
 seq = generator(pipedSeq)
 for(i = 0; i < 6; i++) {
   console.log(seq.next())
