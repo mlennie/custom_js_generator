@@ -52,18 +52,18 @@ for(i = 0; i < 6; i++) {
 let pipedSeq
 function pipeSeq(sequencer) {
 
-  let x = sequencer
+  let x = sequencer()
   let pipes = []
   let iterator = {
     pipeline: (pipe) => {
-      pipes.push(pipe)
+      pipes.push(pipe())
       return iterator
     },
     invoke: () => {
       return () => {
         let n
         for(let i = 0; i < pipes.length; i++) {
-          n = i === 0 ? pipes[i]()(x()()) : pipes[i]()(n)
+          n = i === 0 ? pipes[i](x()) : pipes[i](n)
         }
         return n
       }
