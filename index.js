@@ -1,5 +1,5 @@
 const { dummySeq, factorialSeq, fibonacciSeq,
-       rangeSeq } = require("./sequencers")
+       rangeSeq, primeSeq } = require("./sequencers")
 const pipeSeq = require("./pipeSeq")
 const { accumulator } = require("./pipes")
 const test = require("./testHelpers")
@@ -9,6 +9,7 @@ test("Dummy Seq", dummySeq)
 test("Factorial Seq", factorialSeq)
 test("Fibonaccie Seq", fibonacciSeq )
 test("range Seq", rangeSeq, 2,3)
+test("prime Seq", primeSeq)
 
 // Pipe testing
 let pipedSeq

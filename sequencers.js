@@ -1,3 +1,15 @@
+const isPrime = num => {
+  for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
+    if(num % i === 0) return false
+    return num !== 1
+  }
+}
+
+const findNextPrime = (currentPrime) => {
+  const newPrime = currentPrime + 1
+  return isPrime(newPrime) ? newPrime : findNextPrime(newPrime)
+}
+
 module.exports = {
 
   dummySeq: () => {
@@ -36,6 +48,16 @@ module.exports = {
       return x
     }
 
+  },
+
+  primeSeq: () => {
+    let nextPrime = 2
+    let currentPrime
+    return () => {
+      currentPrime = nextPrime
+      nextPrime = findNextPrime(currentPrime)
+      return currentPrime
+		}
   }
 
 }
