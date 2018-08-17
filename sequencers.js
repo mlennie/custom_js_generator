@@ -58,6 +58,22 @@ module.exports = {
       nextPrime = findNextPrime(currentPrime)
       return currentPrime
 		}
+  },
+
+  partialSumSeq: (args) => {
+    let i = 0
+    let sum = 0
+    return () => {
+      if (i >= args.length) {
+        // throw error here
+        console.error("error")
+        return null
+      } else {
+        sum += args[i]
+        i++
+        return sum
+      }
+    }
   }
 
 }
