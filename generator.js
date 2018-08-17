@@ -50,15 +50,27 @@ for(i = 0; i < 6; i++) {
 ///////////////////////
 
 let pipedSeq
-
 function pipeSeq(sequencer) {
 
+  let pipes = []
   return {
     pipeline: (pipe) => {
-      pipe(sequencer())
+      pipes.push(pipe)
       return pipeSeq(sequencer)
     },
-    invoke: () => {}
+    invoke: () => {
+      let n
+      for(let i = 0; i < pipes.length; i++) {
+        n = i === 0 ? pipes[i](sequencer()) : pipes[i](n)
+        /*
+        if (i===0) {
+          n = pipes[i](sequencer())
+        } else {
+          n = pipes[i](n)
+        }*/
+      }
+      return () => {return n}
+    }
   }
 
 }
