@@ -15,6 +15,15 @@ module.exports = {
       i++
       return n
     }
+  },
+
+  fibonacciSeq: () => {
+    let [prev, curr] = [0,1]
+    return () => {
+      [prev, curr] = [curr, prev + curr]
+      return curr
+    }
+
   }
 
 }

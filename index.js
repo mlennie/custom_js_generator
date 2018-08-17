@@ -1,36 +1,20 @@
-const generator = require("./generator")
-const { dummySeq, factorialSeq } = require("./sequences")
+const { dummySeq, factorialSeq, fibonacciSeq } = require("./sequencers")
 const pipeSeq = require("./pipeSeq")
 const { accumulator } = require("./pipes")
-
-let seq
-let i
-let pipedSeq
+const test = require("./testHelpers")
 
 // Sequence testing
-console.log("Dummy Seq")
-seq = generator(dummySeq)
-for(i = 0; i < 6; i++) {
-  console.log(seq.next())
-}
-
-
-console.log("FactorialSeq")
-seq = generator(factorialSeq)
-for(i = 0; i < 6; i++) {
-  console.log(seq.next())
-}
+test(dummySeq, "Dummy Seq")
+test(factorialSeq, "Factorial Seq")
+test(fibonacciSeq, "Fibonaccie Seq")
 
 // Pipe testing
-console.log("FactorialSeq with accumulator pipe")
+let pipedSeq
 pipedSeq = () => {
   return pipeSeq(factorialSeq)
            .pipeline(accumulator)
            .invoke()
 }
 
-seq = generator(pipedSeq)
-for(i = 0; i < 6; i++) {
-  console.log(seq.next())
-}
+test(pipedSeq, "FactorialSeq with accumulator pipe")
 
