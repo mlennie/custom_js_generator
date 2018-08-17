@@ -1,8 +1,8 @@
+const pipeSeq = require("./pipeSeq")
+const test = require("./testHelpers")
+const { accumulator, isEven } = require("./pipes")
 const { dummySeq, factorialSeq, fibonacciSeq,
        rangeSeq, primeSeq, partialSumSeq } = require("./sequencers")
-const pipeSeq = require("./pipeSeq")
-const { accumulator, isEven } = require("./pipes")
-const test = require("./testHelpers")
 
 // Sequence testing
 test("Dummy Seq", dummySeq)
