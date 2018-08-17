@@ -8,13 +8,43 @@ function generator(sequencer) {
   return iterator
 }
 
-// dummy seq
+let seq
+let i
+
+// Dummy seq
 function dummySeq() {
+  let i = 0
   return function() {
-    return "dummy"
+    return i++
   }
 }
 
-const seq = generator(dummySeq)
-console.log(seq.next())
-console.log(seq.next())
+console.log("Dummy Seq")
+seq = generator(dummySeq)
+seq = generator(dummySeq)
+for(i = 0; i < 6; i++) {
+  console.log(seq.next())
+}
+
+
+function factorialSeq() {
+  let i = 0
+  let n = 1
+  return function() {
+    if (i === 0) {
+      i++
+      return n
+    } else {
+      n = n * i
+      i++
+      return n
+    }
+  }
+}
+
+console.log("FactorialSeq")
+seq = generator(factorialSeq)
+for(i = 0; i < 6; i++) {
+  console.log(seq.next())
+}
+
