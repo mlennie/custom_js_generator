@@ -22,3 +22,11 @@ pipedSeq = () => {
 
 test("FactorialSeq with accumulator pipe", pipedSeq )
 
+pipedSeq = () => {
+  return pipeSeq(rangeSeq, 2,3)
+           .pipeline(accumulator)
+           .invoke()
+}
+
+test("RangeSeq with accumulator pipe", pipedSeq )
+

@@ -65,9 +65,7 @@ module.exports = {
     let sum = 0
     return () => {
       if (i >= args.length) {
-        // throw error here
-        console.error("error")
-        return null
+        return "error"
       } else {
         sum += args[i]
         i++

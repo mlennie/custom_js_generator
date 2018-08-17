@@ -1,5 +1,5 @@
-module.exports = (sequencer) => {
-  let x = sequencer()
+module.exports = (sequencer, ...args) => {
+  let x = sequencer(args)
   let pipes = []
   let iterator = {
     pipeline: (pipe) => {
