@@ -43,8 +43,8 @@ module.exports = {
   },
 
   rangeSeq: (args) => {
-    let start = args[0] // start
-    let step = args[1] // step
+    let start = args[0]
+    let step = args[1]
     let x
     return () => {
       x = start

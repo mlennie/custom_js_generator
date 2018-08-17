@@ -1,4 +1,5 @@
 const generator = require("./generator")
+
 module.exports = (name, sequencer, ...args) => {
   console.log(name)
   let seq = generator(sequencer, args)

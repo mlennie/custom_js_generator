@@ -1,10 +1,10 @@
 module.exports = (sequencer, ...args) => {
   let x = sequencer(args)
   let pipes = []
-  let iterator = {
+  let options = {
     pipeline: (pipe) => {
       pipes.push(pipe())
-      return iterator
+      return options
     },
     invoke: () => {
       return () => {
@@ -18,6 +18,6 @@ module.exports = (sequencer, ...args) => {
       }
     }
   }
-  return iterator
+  return options
 }
 
