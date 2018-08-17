@@ -8,7 +8,7 @@ const test = require("./testHelpers")
 test("Dummy Seq", dummySeq)
 test("Factorial Seq", factorialSeq)
 test("Fibonaccie Seq", fibonacciSeq )
-test("range Seq", rangeSeq, 2,3)
+test("range Seq", rangeSeq, 1,2)
 test("prime Seq", primeSeq)
 test("partial sum Seq", partialSumSeq, 1,3,7,2,0)
 

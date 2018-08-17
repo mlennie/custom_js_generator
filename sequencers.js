@@ -1,8 +1,12 @@
-const isPrime = num => {
-  for(let i = 2, s = Math.sqrt(num); i <= s; i++) {
-    if(num % i === 0) return false
-    return num !== 1
-  }
+const isPrime = (input) => {
+    let prime = true
+    for (let i = 2; i <= Math.sqrt(input); i++) {
+        if (input % i == 0) {
+            prime = false;
+            break;
+        }
+    }
+    return prime && (input > 1);
 }
 
 const findNextPrime = (currentPrime) => {
